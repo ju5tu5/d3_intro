@@ -1,0 +1,181 @@
+<!--
+    o8o               oooooooo     .                 oooooooo                 oooo
+    `"'              dP"""""""   .o8                dP"""""""                 `888
+   oooo oooo  oooo  d88888b.   .o888oo oooo  oooo  d88888b.       ooo. .oo.    888
+   `888 `888  `888      `Y88b    888   `888  `888      `Y88b      `888P"Y88b   888
+    888  888   888        ]88    888    888   888        ]88       888   888   888
+    888  888   888  o.   .88P    888 .  888   888  o.   .88P  .o.  888   888   888
+    888  `V88V"V8P' `8bd88P'     "888"  `V88V"V8P' `8bd88P'   Y8P o888o o888o o888o
+.o. 88P
+`Y888P  >> Braveaux, het lezen van de broncode is de eerste stap naar verlichting!
+
+Deze bestanden vertegenwoordigen de digitale ondersteuning voor een workshop in D3
+welke op 24 mei 2013 aangeboden wordt op het seminar Datavisualisaties in beweging
+<http://datavisualisatiesinbeweging.nl/>, een seminar georganiseerd door het 
+Centraal Bureau voor de Statistiek in samenwerking met Eugène Tjoa en Bas Broekhuizen.
+
+Aangedreven door reveal.js van Hakim El Hattab!
+
+Alle inhoud van dit bestand is Copyleft 2013 onder CC-BY-SA, all wrongs reversed.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Inleiding D3</title>
+
+    <meta name="description" content="Verrassende interactieve visualisaties in 75 minuten!" />
+    <meta name="author" content="Justus Sturkenboom <justus@ju5tu5.nl>" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="static/css/reveal.min.css" />
+    <link rel="stylesheet" href="static/css/serif.css" />
+    <link rel="stylesheet" href="static/css/zenburn.css" />
+    <link rel="stylesheet" href="static/css/d3_svg.css">
+    
+    <!--[if lt IE 9]>
+    <script src="static/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div id='artboard' class="chart" style="position:absolute;top:0;width:100%;height:100%;border:1px;"></div>
+
+    <div class="reveal">
+        
+        <div class="slides">
+            
+            <section>
+                <h1>Inleiding D3</h1>
+
+                <h3>Verrassende interactieve visualisaties in 75 minuten!</h3>
+                <p>
+                    <small>
+                        <a href="http://www.hva.nl" target="_blank">Hogeschool van Amsterdam</a><br/>
+                        <a href="http://www.cmd-amsterdam.nl" target="_blank">CMD-Amsterdam</a><br />
+                        <a href="http://www.dataviz.nl" target="_blank">Datavisualisatie</a><br />
+                        <a href="http://ju5tu5.nl" target="_blank">Justus Sturkenboom</a>
+                    </small>
+                </p>
+            </section>
+
+            <section>
+                <ul>
+                    <li>D3, Data-Driven Documents (5 min)</li>
+                    <li>Hoe werkt D3? (10 min)</li>
+                    <li>Oefening: Hallo wereld... Basic DOM en SVG! (10 min)</li>
+                    <li>Dynamic data (10 min)</li>
+                    <li>Oefening: Enter, append, exit... (10 min)</li>
+                    <li>Interactie met gebruikers (10 min)</li>
+                    <li>Oefening: Aanpassen van visualisaties na interactie (10 min)</li>
+                    <li>Vervolgstappen</li>
+                </ul>
+            </section>
+            
+            <!-- D3, Data-Driven Documents -->
+            <section>
+                <section>
+                    <img src="media/img/D3-logo.svg" style="border:0px;box-shadow:none;" alt="D3" /><br/>
+                    <p><small>(<a href="https://groups.google.com/forum/?fromgroups=#!topic/d3-js/_AHWMqF1_WQ" target="_blank">D3 Logo Contest</a>)</small></p>
+                </section>
+
+                <section>
+                    <img src="media/img/HTML5-logo.svg" style="border:0px;box-shadow:none;" alt="HTML5" /><br/>
+                </section>
+
+                <section>
+                    <img src="media/img/SVG-logo.svg" style="border:0px;box-shadow:none;" alt="Scalable Vector Graphics" />
+                </section>
+
+                <section>
+                    <img src="media/img/CSS3-logo.svg" style="border:0px;box-shadow:none;" alt="Scalable Vector Graphics" />
+                </section>
+
+                <section style="text-align:left">
+                    <h3>HTML5</h3>
+                    <a href="http://www.html5rocks.com/en/resources" target="_blank">HTML5 Rocks - Resources</a>
+                    <br /><br />
+
+                    <h3>SVG</h3>
+                    <a href="">svg</a>
+                    <br /><br />
+
+                    <h3>CSS 3</h3>
+                    <a href="">css3</a>
+
+                </section>
+            </section>
+
+            <!-- Hoe werkt D3? -->
+            <section>
+                <section>
+                    <h2>Document Object Model</h2>
+                </section>
+                <section>
+                    <h2>HTML rendering</h2>
+                </section>
+            </section>
+
+            <!-- Oef: Hallo wereld... Basic DOM en SVG! -->
+            <section> <!-- alert, soothe, blackout, whiteout, cobalt, mint, submerge, lila, sunset -->
+                <section data-state="soothe">
+                    <h2>Oefening 1: standardista</h2>
+                <pre><code contenteditable>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Hello world!&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css" /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    
+    &lt;script src="d3.v2.js"&gt;&lt;/script&gt;
+    &lt;script src="helloWorld.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                </code></pre>
+                </section>
+                <section data-state="soothe">
+                    <h2>Oefening 1: valide</h2>
+                <pre><code contenteditable>
+&lt;!DOCTYPE html&gt;
+&lt;meta charset="utf-8"&gt;
+&lt;style&gt;/* CSS */&lt;/style&gt;
+&lt;body&gt;
+&lt;script src="d3.v2.js"&gt;&lt;/script&gt;
+&lt;script&gt;/* Javascript */&lt;/script&gt;
+                </code></pre>
+                </section>
+
+            </section>
+
+            
+            <!-- Dynamic Data (Enter, Append, Exit) -->
+            <section></section>
+
+            <!-- Oef: e,a,e -->
+            <section></section>            
+
+            <!-- Interactie met gebruikers -->
+            <section></section>
+
+            <!-- Oef: event-handling -->
+            <section></section>
+
+            <!-- Outro, Vega -->
+            <section></section>
+            
+        </div>
+
+    </div>
+
+    <!-- Scripts should be here -->
+    <script src="static/js/d3.v3.min.js"></script>
+    <script src="static/js/head.min.js"></script>
+    <script src="static/js/reveal.min.js"></script>
+    <script src="static/js/d3_intro.js"></script>
+</body>
+</html>
