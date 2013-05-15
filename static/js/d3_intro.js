@@ -1,24 +1,3 @@
-/*
-    o8o               oooooooo     .                 oooooooo                 oooo
-    `"'              dP"""""""   .o8                dP"""""""                 `888
-   oooo oooo  oooo  d88888b.   .o888oo oooo  oooo  d88888b.       ooo. .oo.    888
-   `888 `888  `888      `Y88b    888   `888  `888      `Y88b      `888P"Y88b   888
-    888  888   888        ]88    888    888   888        ]88       888   888   888
-    888  888   888  o.   .88P    888 .  888   888  o.   .88P  .o.  888   888   888
-    888  `V88V"V8P' `8bd88P'     "888"  `V88V"V8P' `8bd88P'   Y8P o888o o888o o888o
-.o. 88P
-`Y888P  >> Braveaux, het lezen van de broncode is de eerste stap naar verlichting!
-
-Deze bestanden vertegenwoordigen de digitale ondersteuning voor een workshop in D3
-welke op 24 mei 2013 aangeboden wordt op het seminar Datavisualisaties in beweging
-<http://datavisualisatiesinbeweging.nl/>, een seminar georganiseerd door het 
-Centraal Bureau voor de Statistiek in samenwerking met Eugène Tjoa en Bas Broekhuizen.
-
-Aangedreven door reveal.js van Hakim El Hattab!
-
-Alle inhoud van dit bestand is Copyleft 2013 onder CC-BY-SA, all wrongs reversed.
-*/
-
 (function () {
     'use strict';
     var artboard = document.getElementById("artboard");
