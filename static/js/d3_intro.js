@@ -102,6 +102,53 @@
                     this.displayed = false;
                 }
             }
+        },
+        basic: {
+            displayed: false,
+            dataLoaded: false,
+            data: [],
+            loadData: function () {
+                this.data = [];
+                for(var i=0; i<12; i++){
+                    this.data.push(10+Math.random()*60);
+                }
+                this.dataLoaded = true;
+            },
+            visualise: function () {
+                if (!this.dataLoaded) {
+                    this.loadData();
+                }
+
+                var width = window.innerWidth,
+                    height = window.innerHeight,
+                    spacing = width/(this.data.length+1);
+
+                var svg = d3.select("#artboard").append("svg:svg")
+                    .attr("width", width)
+                    .attr("height", height);
+
+                var circles = svg.selectAll("circle")
+                  .data(this.data)
+                    .enter()
+                    .append("circle");
+
+                circles.attr("cx", function (d, i) {
+                        return (i * spacing) + spacing;
+                    })
+                    .attr("cy", height / 2)
+                    .attr("r", function (d) {
+                        return d;
+                    })
+                    .attr("class", "basicCircle");
+
+                this.displayed = true;
+            },
+            clear: function () {
+                if(this.displayed) {
+                    clearArtboard();
+                    this.displayed = false;
+                }
+            }
         }
     };
 
@@ -133,11 +180,13 @@
 
         clearAll();
 
-        if (slidecoord.compare([0,0]) || slidecoord.compare([3,0])) {
+        if (slidecoord.compare([0,0]) || slidecoord.compare([7,1])) {
             visualisation.domtree.visualise();
         }
 
-
+        if(slidecoord.compare([8,0])){
+            visualisation.basic.visualise();
+        }
     });
 
     // Initial visualisation on the front-slide
@@ -146,6 +195,10 @@
 
         if (slidecoord.compare([0,0]) && !visualisation.domtree.displayed) {
             visualisation.domtree.visualise();
+        }
+
+        if(slidecoord.compare([8,0]) && !visualisation.basic.displayed){
+            visualisation.basic.visualise();
         }
     });
 

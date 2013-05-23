@@ -1,3 +1,19 @@
+#svgSample {
+  background: #d2d2d2;
+}
+#svgSample circle {
+  fill: red;
+  stroke: black;
+}
+#svgSample line {
+  stroke: black;
+}
+
+.basicCircle {
+  fill: grey;
+  stroke: black;
+}
+
 .chart {
   font: 9px monospace;
   ;

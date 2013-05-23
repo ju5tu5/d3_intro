@@ -28,7 +28,7 @@ Alle inhoud van dit bestand is Copyleft 2013 onder CC-BY-SA, all wrongs reversed
 
     <link rel="stylesheet" href="static/css/reveal.min.css" />
     <link rel="stylesheet" href="static/css/serif.css" />
-    <link rel="stylesheet" href="static/css/zenburn.css" />
+    <link rel="stylesheet" href="static/css/monokai_sublime.css" />
     <link rel="stylesheet" href="static/css/d3_svg.css">
     
     <!--[if lt IE 9]>
@@ -58,110 +58,368 @@ Alle inhoud van dit bestand is Copyleft 2013 onder CC-BY-SA, all wrongs reversed
 
             <section>
                 <ul>
-                    <li>D3, Data-Driven Documents (5 min)</li>
-                    <li>Hoe werkt D3? (10 min)</li>
-                    <li>Oefening: Hallo wereld... Basic DOM en SVG! (10 min)</li>
-                    <li>Dynamic data (10 min)</li>
-                    <li>Oefening: Enter, append, exit... (10 min)</li>
+                    <li>D3, Data-Driven Documents</li>
+                    <li>Hoe werkt D3?</li>
+                    <li>Oefening: Data en DOM-elementen</li>
+                    <li>Dynamische Data</li>
+                    <li>Oefening: Enter, append, exit...</li>
                     <li>Interactie met gebruikers (10 min)</li>
                     <li>Oefening: Aanpassen van visualisaties na interactie (10 min)</li>
                     <li>Vervolgstappen</li>
                 </ul>
+                <p>Tools?</p>
             </section>
             
-            <!-- D3, Data-Driven Documents -->
+            <!-- D3, Data-Driven Documents (5 min) -->
+            
             <section>
                 <section>
                     <img src="media/img/D3-logo.svg" style="border:0px;box-shadow:none;" alt="D3" /><br/>
                     <p><small>(<a href="https://groups.google.com/forum/?fromgroups=#!topic/d3-js/_AHWMqF1_WQ" target="_blank">D3 Logo Contest</a>)</small></p>
                 </section>
-
+                
+            </section>
+            
+            <section>
                 <section>
                     <img src="media/img/HTML5-logo.svg" style="border:0px;box-shadow:none;" alt="HTML5" /><br/>
                 </section>
+                
+                <section>
+                    <h2>HTML5 in a nutshell</h2>
+                    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Een titel&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
 
+    &lt;h1&gt;Ik ben een titel&lt;/h1&gt;
+    &lt;p&gt;Ik ben een alinea&lt;/p&gt;
+    &lt;a href="http://voorbeeld.nl"&gt;Ik ben een referentie&lt;/a&gt;
+
+    &lt;article&gt;
+        &lt;p&gt;Ik ben een alinea, genest in een artikel!&lt;/p&gt;
+    &lt;/article&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </section>
+
+                <section>
+                    <h3>HTML5 Resources</h3>
+                    <a href="http://www.html5rocks.com/en/resources" target="_blank">HTML5 Rocks - Resources</a>
+                    <a href="http://learn.shayhowe.com/html-css/">A Beginners Guide to HTML &amp; CSS</a>
+                </section>
+            </section>
+            
+            <section>
+                <section>
+                    <img src="media/img/CSS3-logo.svg" style="border:0px;box-shadow:none;" alt="CSS3" />
+                </section>
+
+                <section>
+                    <h2>CSS in a nutshell</h2>
+                    <pre><code>body {
+    background: grey;
+    font-family: "Palatino Linotype", Palatino, FreeSerif, serif;
+    color: black;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 2em;
+}
+
+article p {
+    padding-bottom: 1em;
+    color: red;
+}</code></pre>
+                </section>
+
+                <section>
+                    <h2>CSS Resources</h2>
+                    <a href=""></a>
+                    <a href=""></a>
+                </section>
+            </section>
+
+            <section>
                 <section>
                     <img src="media/img/SVG-logo.svg" style="border:0px;box-shadow:none;" alt="Scalable Vector Graphics" />
                 </section>
 
                 <section>
-                    <img src="media/img/CSS3-logo.svg" style="border:0px;box-shadow:none;" alt="Scalable Vector Graphics" />
+                    <h2>SVG in a Nutshell</h2>
+                    <pre><code>&lt;svg width="864" height="200"&gt;
+    &lt;line x1="20" y1="100" x2="844" y2="100" /&gt;
+    &lt;line x1="20" y1="20" x2="20" y2="190" /&gt;
+
+    &lt;circle cx="150" cy="100" r="10" /&gt;
+    &lt;circle cx="350" cy="150" r="20" /&gt;
+    &lt;circle cx="550" cy="50" r="30" /&gt;
+    &lt;circle cx="750" cy="130" r="40" /&gt;
+&lt;/svg&gt;</code></pre>
+                    <svg id="svgSample" width="864" height="200">
+                        <line x1="20" y1="100" x2="844" y2="100" />
+                        <line x1="20" y1="20" x2="20" y2="190" />
+
+                        <circle cx="150" cy="100" r="10" />
+                        <circle cx="350" cy="150" r="20" />
+                        <circle cx="550" cy="50" r="30" />
+                        <circle cx="750" cy="130" r="40" />
+                    </svg>
                 </section>
 
-                <section style="text-align:left">
-                    <h3>HTML5</h3>
-                    <a href="http://www.html5rocks.com/en/resources" target="_blank">HTML5 Rocks - Resources</a>
-                    <br /><br />
+                <section>
+                    <h3>SVG Resources</h3>
+                    <a href=""></a>
+                    <a href=""></a>
+                </section>
+            </section>
+            
+            <section>
+                <section>
+                    <img src="media/img/JS-logo.svg" style="border:0px;box-shadow:none;" alt="Javascript" />
+                </section>
+                
+                <section>
+                    <h2>Javascript in a nutshell</h2>
+                    <pre><code>
+                        
+                    </code></pre>
+                </section>
+                
+                <section>
+                    <h2>JSON in a nutshell</h2>
+                    <pre><code>
+                        
+                    </code></pre>
+                </section>
 
-                    <h3>SVG</h3>
-                    <a href="">svg</a>
-                    <br /><br />
-
-                    <h3>CSS 3</h3>
-                    <a href="">css3</a>
-
+                <section>
+                    <h3>Javascript Resources</h3>
+                    <a href=""></a>
+                    <a href=""></a>
                 </section>
             </section>
 
-            <!-- Hoe werkt D3? -->
+            <!-- Hoe werkt D3? (10 min) -->
             <section>
+                 <section>
+                    <h2>Data-Driven Documents</h2>
+                    <ol>
+                        <li>Inladen van data</li>
+                        <li>Koppelen van data aan DOM-elementen</li>
+                        <li>Transformeren van DOM-elementen a.d.h.v. data</li>
+                        <li>Transitie van elementen na interactie</li>
+                    </ol>
+                </section>
+
                 <section>
                     <h2>Document Object Model</h2>
+                    <p>Beschrijft de data-structuur van een document.</p>
                 </section>
+
                 <section>
                     <h2>HTML rendering</h2>
                 </section>
+
+                <section>
+                    Hoe werken selecties
+                </section>
+
+                <section>
+                    Koppelen van data op selecties
+                </section>
             </section>
 
-            <!-- Oef: Hallo wereld... Basic DOM en SVG! -->
+            <!-- Oef: Hallo wereld... Basic DOM en SVG! BINDING DATA TO ELEMENTS (10 min) -->
             <section> <!-- alert, soothe, blackout, whiteout, cobalt, mint, submerge, lila, sunset -->
+                <section data-state="soothe"></section>
+
                 <section data-state="soothe">
-                    <h2>Oefening 1: standardista</h2>
-                <pre><code contenteditable>
-&lt;!DOCTYPE html&gt;
+                    <a href="examples/oef1_standardista.html" target="_blank">oef1_standardista.html</a>
+                    <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
     &lt;meta charset="utf-8"&gt;
     &lt;title&gt;Hello world!&lt;/title&gt;
-    &lt;link rel="stylesheet" href="style.css" /&gt;
+    &lt;link rel="stylesheet" href="oef1_style.css" /&gt;
 &lt;/head&gt;
 &lt;body&gt;
     
-    &lt;script src="d3.v2.js"&gt;&lt;/script&gt;
-    &lt;script src="helloWorld.js"&gt;&lt;/script&gt;
+    &lt;script src="d3/d3.v3.min.js"&gt;&lt;/script&gt;
+    &lt;script src="oef1_script.js"&gt;&lt;/script&gt;
 &lt;/body&gt;
-&lt;/html&gt;
-                </code></pre>
+&lt;/html&gt;</code></pre>
+                    <a href="examples/oef1_style.css" target="_blank">oef1_style.css</a>
+                    <pre><code contenteditable>/* Jouw wonderlijke Stylesheet */</code></pre>
+                    <a href="examples/oef1_script.js" target="_blank">oef1_script.js</a>
+                    <pre><code contenteditable>/* Jouw elegante Javascript */</code></pre>
+                    <p>Voordelen: Overdraagbaar, Beheerbaar, Herbruikbaar</p>
                 </section>
+
                 <section data-state="soothe">
-                    <h2>Oefening 1: valide</h2>
-                <pre><code contenteditable>
-&lt;!DOCTYPE html&gt;
+                    <a href="examples/oef1_valide.html" target="_blank">oef1_valide.html</a>
+                <pre><code>&lt;!DOCTYPE html&gt;
 &lt;meta charset="utf-8"&gt;
-&lt;style&gt;/* CSS */&lt;/style&gt;
+&lt;style&gt;/* Jouw wonderlijke Stylesheet */&lt;/style&gt;
 &lt;body&gt;
-&lt;script src="d3.v2.js"&gt;&lt;/script&gt;
-&lt;script&gt;/* Javascript */&lt;/script&gt;
-                </code></pre>
+&lt;script src="d3/d3.v3.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;/* Jouw elegante Javascript */&lt;/script&gt;</code></pre>
+                <p>Voordelen: Makkelijker, Sneller</p>
+                </section>
+                
+                <section data-state="soothe">                    
+                    <pre><code>svg {
+    background: silver;
+    border: 1px solid black;
+}
+
+.oef1_cirkel {
+    fill: white;
+    stroke: red;
+}</code></pre>
+                    <p>Allereerst leggen we vast hoe de visualisatie er uit komt te zien. Neem onderstaande stijlregels over in het .css bestand of de &lt;style&gt; tag. Experimenteer met andere kleuren.</p>
+                </section>
+
+                <section data-state="soothe">
+                    <pre><code>var dataset = [..]; // voer zelf een serie getallen in, bijv. [1,2,3]
+
+var svg = d3.select("body").append("svg")
+    .attr("width", 400)
+    .attr("height", 300);
+
+var circles = svg.selectAll("circle")
+  .data(dataset)
+    .enter()
+    .append("circle");
+
+circles.attr("cx", function (d, i) {
+        return (i * 50) + 25;
+    })
+    .attr("cy", 150)
+    .attr("r", function (d) { return d; })
+    .attr("class", "oef1_cirkel");</code></pre>
+                </section>
+
+
+
+            <section data-state="soothe">
+                    <pre><code>var dataset = [..]; // voer zelf een serie getallen in, bijv. [1,2,3]
+
+var svg = d3.select("body").append("svg")
+    .attr("width", 400)
+    .attr("height", 300);
+
+var circles = svg.selectAll("circle")
+  .data(dataset)
+    .enter()
+    .append("circle");
+
+circles.attr({
+        cx: function (d, i) { return (i * 50) + 25; },
+        cy: 150,
+        r:  function (d) { return d; },
+        class: "oef1_cirkel"
+    });</code></pre>
                 </section>
 
             </section>
 
             
-            <!-- Dynamic Data (Enter, Append, Exit) -->
-            <section></section>
+            <!-- Dynamic Data (Enter, Update, Exit) (10 min) -->
+            <section>
+                <section>
+                    <h2>Dynamic Data</h2>
+                    <p><em>Omdat statische data saai is</em></p>
+                </section>
 
-            <!-- Oef: e,a,e -->
-            <section></section>            
+                <section>
+                    Koppeling van nieuwe data op bestaande selecties
+                </section>
 
-            <!-- Interactie met gebruikers -->
-            <section></section>
+                <section>
+                    3 situaties mogelijk
+                    Venn-Diagram van update, enter en exit?
+                </section>
+                
+                <section>
+                    vertaling naar d3 code?
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h2>Inzichtelijk maken?</h2>
+                    <p>scatterplot?</p>
+                </section>
+
+                <section>
+                    <p>Scales</p>
+                </section>
+
+                <section>
+                    <p>Axis</p>
+                </section>
+            </section>
+
+            <!-- Oef: e,a,e (10 min) -->
+            <section>
+                <section data-state="soothe">
+                    Update, Enter, Exit
+                </section>
+            </section>            
+
+            <!-- Interactie met gebruikers (10 min) -->
+            <section>
+                <section>
+                    <h2>Interactie</h2>
+                    <p>Laat gebruikers zelf een data-onderzoek doen en jouw conclusies verifieren!</p>
+                </section>
+                
+                <section>
+                    mouse-over voor extra informatie
+                </section>
+
+                <section>
+                    subselecties in bijv. jaartallen
+                </section>
+
+            </section>
 
             <!-- Oef: event-handling -->
-            <section></section>
+            <section>
+                <section data-state="soothe">
+                    vis events
+                </section>
+            </section> 
 
             <!-- Outro, Vega -->
-            <section></section>
+            <section>
+                <section>
+                    <h2>Beyond basics</h2>
+                </section>
+
+                <section>
+                    <h2>Vega</h2>
+                    <p><em></em></p>
+                </section>
+
+                <section>
+                    <h2>Bronnen:</h2>
+                    <p>Boeken:</p>
+                    <ul>
+                        <li>Getting Started with D3</li>
+                        <li>Interactive Data Visualisation for the Web</li>
+                    </ul>
+                    <p>Websites:</p>
+                    <ul>
+                        <li><a href=""></a></li>
+                    </ul>
+                </section>
+            </section>
             
         </div>
 
