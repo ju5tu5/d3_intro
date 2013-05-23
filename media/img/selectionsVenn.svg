@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="512px" height="350px" viewBox="0 0 512 350" enable-background="new 0 0 512 350" xml:space="preserve">
+<circle fill="#BCBEC0" cx="174.913" cy="171.912" r="160.913"/>
+<circle fill="#8DC63F" cx="333.088" cy="171.912" r="160.912"/>
+<path fill="#00A79D" d="M252.175,31.755c-48.848,27.623-81.825,80.035-81.825,140.157c0,60.121,32.977,112.533,81.825,140.156
+	C301.022,284.445,334,232.033,334,171.912C334,111.79,301.022,59.378,252.175,31.755z"/>
+<text transform="matrix(1 0 0 1 150.9844 331)" font-family="'MyriadPro-Regular'" font-size="12">Origineel</text>
+<text transform="matrix(1 0 0 1 317.9199 331)" font-family="'MyriadPro-Regular'" font-size="12">Nieuw</text>
+<text transform="matrix(1 0 0 1 78.6567 171)" font-family="'MyriadPro-Regular'" font-size="22">.exit()</text>
+<text transform="matrix(1 0 0 1 221.0225 171)" font-family="'MyriadPro-Regular'" font-size="22">update</text>
+<text transform="matrix(1 0 0 1 371.1113 171)" font-family="'MyriadPro-Regular'" font-size="22">.enter()</text>
+</svg>

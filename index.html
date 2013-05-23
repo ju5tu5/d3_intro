@@ -58,8 +58,7 @@ Alle inhoud van dit bestand is Copyleft 2013 onder CC-BY-SA, all wrongs reversed
 
             <section>
                 <ul>
-                    <li>D3, Data-Driven Documents</li>
-                    <li>Hoe werkt D3?</li>
+                    <li>d3: Data Driven Documents</li>
                     <li>Oefening: Data en DOM-elementen</li>
                     <li>Dynamische Data</li>
                     <li>Oefening: Enter, append, exit...</li>
@@ -206,31 +205,41 @@ article p {
 
             <!-- Hoe werkt D3? (10 min) -->
             <section>
-                 <section>
-                    <h2>Data-Driven Documents</h2>
+                 <section style="text-align: left">
+                    <h2>d3: Data Driven Documents</h2>
                     <ol>
-                        <li>Inladen van data</li>
-                        <li>Koppelen van data aan DOM-elementen</li>
-                        <li>Transformeren van DOM-elementen a.d.h.v. data</li>
+                        <li>Gegevens inladen</li>
+                        <li>Koppelen van gegevens aan DOM-elementen</li>
+                        <li>Transformeren van DOM-elementen a.d.h.v. gegevens</li>
                         <li>Transitie van elementen na interactie</li>
                     </ol>
+                    <br /><br />
+                    <p>Data-hiding is geen optie. Open Data FTW!</p>
                 </section>
 
                 <section>
-                    <h2>Document Object Model</h2>
-                    <p>Beschrijft de data-structuur van een document.</p>
+                    <h2>Selectie</h2>
                 </section>
 
                 <section>
-                    <h2>HTML rendering</h2>
+                    <pre><code>var data = [23, 89, 17, 31, 11];
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+var circles = svg.selectAll("circle")
+    .data(data)
+  .enter()
+    .append("circle");
+
+// ...
+                    </code></pre>
+                    <img src="media/img/selections.svg" alt="Selecties in D3" style="border: 0;box-shadow:none;" />
                 </section>
 
                 <section>
-                    Hoe werken selecties
-                </section>
-
-                <section>
-                    Koppelen van data op selecties
+                    
                 </section>
             </section>
 
@@ -285,7 +294,7 @@ article p {
                 </section>
 
                 <section data-state="soothe">
-                    <pre><code>var dataset = [..]; // voer zelf een serie getallen in, bijv. [1,2,3]
+                    <pre><code>var dataset = [..]; // voer een serie getallen in bijv. [1,1,2,3,5,8]
 
 var svg = d3.select("body").append("svg")
     .attr("width", 400)
@@ -302,12 +311,13 @@ circles.attr("cx", function (d, i) {
     .attr("cy", 150)
     .attr("r", function (d) { return d; })
     .attr("class", "oef1_cirkel");</code></pre>
+                    <p>(losse atributen)</p>
                 </section>
 
 
 
             <section data-state="soothe">
-                    <pre><code>var dataset = [..]; // voer zelf een serie getallen in, bijv. [1,2,3]
+                    <pre><code>var dataset = [..]; // voer een serie getallen in bijv. [1,1,2,3,5,8]
 
 var svg = d3.select("body").append("svg")
     .attr("width", 400)
@@ -324,6 +334,7 @@ circles.attr({
         r:  function (d) { return d; },
         class: "oef1_cirkel"
     });</code></pre>
+                    <p>(&eacute;&eacute;n object met alle attributen)</p>
                 </section>
 
             </section>
@@ -332,43 +343,141 @@ circles.attr({
             <!-- Dynamic Data (Enter, Update, Exit) (10 min) -->
             <section>
                 <section>
-                    <h2>Dynamic Data</h2>
-                    <p><em>Omdat statische data saai is</em></p>
+                    <h2>Dynamische Data</h2>
+                    <p><em>Omdat statisch saai is (^.^)</em></p>
                 </section>
 
                 <section>
-                    Koppeling van nieuwe data op bestaande selecties
+                    <pre><code>var data = [23, 89, 17, 31, 11];
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+var circles = svg.selectAll("circle")
+    .data(data)
+  .enter()
+    .append("circle");
+
+// ...
+                    </code></pre>
+                    <img src="media/img/selections.svg" alt="Selecties in D3" style="border: 0;box-shadow:none;" />
                 </section>
 
                 <section>
-                    3 situaties mogelijk
-                    Venn-Diagram van update, enter en exit?
+                    <pre><code>// ...
+
+data.push(47, 71);
+
+circles = svg.selectAll("circle")
+    .data(data)
+    .attr("class", "update")
+  .enter()
+    .append("circle")
+    .attr("class", "enter");
+
+// ...
+                    </code></pre>
+                    <img src="media/img/selectionsEnter.svg" alt="Selecties in D3" style="border: 0;box-shadow:none;" />
+                </section>
+
+                <section>
+                    <img src="media/img/selectionsVenn.svg" alt="exit, update, enter" style="border: 0;box-shadow:none;" />
                 </section>
                 
                 <section>
-                    vertaling naar d3 code?
+                    <pre><code>// ...
+data.splice(3, 2);
+
+circles = svg.selectAll("circle")
+    .data(data);
+    .attr({
+        // verander alle nodige attributen 
+    })
+  .enter()
+    .append("circle")
+    .attr({
+        // geef alle nodige attributen mee
+    });
+  .exit()
+    .remove();
+// ...</code></pre>
                 </section>
             </section>
 
             <section>
                 <section>
-                    <h2>Inzichtelijk maken?</h2>
-                    <p>scatterplot?</p>
+                    <h2>Inzichtelijk?</h2>
                 </section>
 
                 <section>
-                    <p>Scales</p>
+                    <h2>Inzichtelijkheid++</h2>
+                </section>
+                
+                <section>
+                    <h2>Samengestelde data</h2>
+                    <pre><code>var data = [
+    [23, 45],
+    [12, 3],
+    [38, 42]
+    //etc.
+];</code></pre>
                 </section>
 
                 <section>
-                    <p>Axis</p>
+                    <h2>Schaal</h2>
+                    <pre><code>// ...
+var xScale = d3.scale.linear()
+    .domain([0, d3.max(data, function(d) { return d[0]; })])
+    .range([padding, width - padding * 2]);
+
+var yScale = d3.scale.linear()
+    .domain([0, d3.max(data, function(d) { return d[1]; })])
+    .range([height - padding, padding]);
+// ...</code></pre>
+                    <ul>
+                        <li>Input = domain</li>
+                        <li>Output = range</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>x- en y-as</h2>
+                    <pre><code>// ...
+var xAxis = d3.svg.axis()
+    .scale(xScale)
+    .orient("bottom")
+    .ticks(5);
+
+var yAxis = d3.svg.axis()
+    .scale(yScale)
+    .orient("left")
+    .ticks(5);
+// ...</code></pre>
+                </section>
+
+                <section>
+                    <h2>x- en y-as</h2>
+                    <pre><code>// ...
+
+svg.append("g")
+    .attr("class", "axis")
+    .attr("transform", "translate(0," + (height - padding) + ")")
+    .call(xAxis);
+
+svg.append("g")
+    .attr("class", "axis")
+    .attr("transform", "translate(" + padding + ",0)")
+    .call(yAxis);
+
+// ...</code></pre>
                 </section>
             </section>
 
             <!-- Oef: e,a,e (10 min) -->
             <section>
                 <section data-state="soothe">
-                    Update, Enter, Exit
+                    
                 </section>
             </section>            
 
@@ -376,7 +485,8 @@ circles.attr({
             <section>
                 <section>
                     <h2>Interactie</h2>
-                    <p>Laat gebruikers zelf een data-onderzoek doen en jouw conclusies verifieren!</p>
+                    <!-- image from http://500px.com/photo/26752507 -->
+                    <img src="media/img/interface.jpg" alt="Ancient Interface" style="border:0">
                 </section>
                 
                 <section>
@@ -385,14 +495,15 @@ circles.attr({
 
                 <section>
                     subselecties in bijv. jaartallen
+                    filter?
                 </section>
-
+                
             </section>
 
             <!-- Oef: event-handling -->
             <section>
                 <section data-state="soothe">
-                    vis events
+                    lijndiagram met interactie!
                 </section>
             </section> 
 
@@ -400,6 +511,8 @@ circles.attr({
             <section>
                 <section>
                     <h2>Beyond basics</h2>
+                    <p>Transities</p>
+                    <p>Non-lineaire verdelingen</p>
                 </section>
 
                 <section>
@@ -407,17 +520,21 @@ circles.attr({
                     <p><em></em></p>
                 </section>
 
-                <section>
+                <section style="text-align: left;">
                     <h2>Bronnen:</h2>
+                    <br/>
                     <p>Boeken:</p>
                     <ul>
                         <li>Getting Started with D3</li>
                         <li>Interactive Data Visualisation for the Web</li>
-                    </ul>
+                    </ul><br/><br/>
                     <p>Websites:</p>
                     <ul>
-                        <li><a href=""></a></li>
+                        <li><a href="http://d3js.org/">d3js.org</a></li>
+                        <li><a href="http://bost.ocks.org/mike/selection/">Uitleg over selecties van Mike Bostock</a></li>
                     </ul>
+                    <br/><br/>
+                    <p>Word lid van: http://www.reddit.com/r/d3js</p>
                 </section>
             </section>
             

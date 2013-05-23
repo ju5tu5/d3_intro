@@ -23,11 +23,11 @@ var xAxis = d3.svg.axis()
     .orient("bottom")
     .ticks(5);
 
-// //Define Y axis
-// var yAxis = d3.svg.axis()
-//     .scale(yScale)
-//     .orient("left")
-//     .ticks(5);
+//Define Y axis
+var yAxis = d3.svg.axis()
+    .scale(yScale)
+    .orient("left")
+    .ticks(5);
 
 //Create SVG element
 var svg = d3.select("body")
@@ -55,11 +55,11 @@ svg.append("g")
     .attr("transform", "translate(0," + (height - padding) + ")")
     .call(xAxis);
 
-// //Create Y axis
-// svg.append("g")
-//     .attr("class", "axis")
-//     .attr("transform", "translate(" + padding + ",0)")
-//     .call(yAxis);
+//Create Y axis
+svg.append("g")
+    .attr("class", "axis")
+    .attr("transform", "translate(" + padding + ",0)")
+    .call(yAxis);
 
 setInterval(function () {
     data.push([Math.floor(Math.random() * max), Math.floor(Math.random() * max)]);

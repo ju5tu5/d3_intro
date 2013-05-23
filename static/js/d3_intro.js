@@ -149,6 +149,238 @@
                     this.displayed = false;
                 }
             }
+        },
+        scatterplotNoChrome: {
+            displayed: false,
+            dataLoaded: false,
+            data: [],
+            loadData: function () {
+                this.data = [];
+                var max = 51;
+                for(var i=0; i<50; i++) {
+                    this.data.push([Math.floor(Math.random() * max), Math.floor(Math.random() * max)]);
+                }
+                this.dataLoaded = true;
+            },
+            visualise: function () {
+                if (!this.dataLoaded) {
+                    this.loadData();
+                }
+
+                var width = window.innerWidth,
+                    height = window.innerHeight,
+                    padding = 100;
+
+                var svg = d3.select("#artboard").append("svg:svg")
+                    .attr("width", width)
+                    .attr("height", height);
+
+                //Create scale functions
+                var xScale = d3.scale.linear()
+                    .domain([0, d3.max(this.data, function(d) { return d[0]; })])
+                    .range([padding, width - padding * 2]);
+
+                var yScale = d3.scale.linear()
+                    .domain([0, d3.max(this.data, function(d) { return d[1]; })])
+                    .range([height - padding, padding]);
+
+                //Create circles
+                svg.selectAll("circle")
+                    .data(this.data)
+                  .enter()
+                    .append("circle")
+                    .attr({
+                        cx: function (d) { return xScale(d[0])},
+                        cy: function (d) { return yScale(d[1])},
+                        r: 3,
+                        class: "oef2_cirkel"
+                    });
+
+                this.displayed = true;
+            },
+            clear: function () {
+                if(this.displayed) {
+                    clearArtboard();
+                    this.displayed = false;
+                }
+            }
+        },
+        scatterplotAxis: {
+            displayed: false,
+            dataLoaded: false,
+            data: [],
+            loadData: function () {
+                this.data = [];
+                var max = 51;
+                for(var i=0; i<50; i++) {
+                    this.data.push([Math.floor(Math.random() * max), Math.floor(Math.random() * max)]);
+                }
+                this.dataLoaded = true;
+            },
+            visualise: function () {
+                if (!this.dataLoaded) {
+                    this.loadData();
+                }
+
+                var width = window.innerWidth,
+                    height = window.innerHeight,
+                    padding = 100;
+
+                var svg = d3.select("#artboard").append("svg:svg")
+                    .attr("width", width)
+                    .attr("height", height);
+
+                //Create scale functions
+                var xScale = d3.scale.linear()
+                    .domain([0, d3.max(this.data, function(d) { return d[0]; })])
+                    .range([padding, width - padding * 2]);
+
+                var yScale = d3.scale.linear()
+                    .domain([0, d3.max(this.data, function(d) { return d[1]; })])
+                    .range([height - padding, padding]);
+
+                // Define X axis
+                var xAxis = d3.svg.axis()
+                    .scale(xScale)
+                    .orient("bottom")
+                    .ticks(5);
+
+                //Define Y axis
+                var yAxis = d3.svg.axis()
+                    .scale(yScale)
+                    .orient("left")
+                    .ticks(5);
+
+                //Create circles
+                svg.selectAll("circle")
+                    .data(this.data)
+                  .enter()
+                    .append("circle")
+                    .attr({
+                        cx: function (d) { return xScale(d[0])},
+                        cy: function (d) { return yScale(d[1])},
+                        r: 3,
+                        class: "oef2_cirkel"
+                    });
+
+                //Create X axis
+                svg.append("g")
+                    .attr("class", "axis")
+                    .attr("transform", "translate(0," + (height - padding) + ")")
+                    .call(xAxis);
+
+                //Create Y axis
+                svg.append("g")
+                    .attr("class", "axis")
+                    .attr("transform", "translate(" + padding + ",0)")
+                    .call(yAxis);
+
+                this.displayed = true;
+            },
+            clear: function () {
+                if(this.displayed) {
+                    clearArtboard();
+                    this.displayed = false;
+                }
+            }
+        },
+        scatterplotFull: {
+            displayed: false,
+            dataLoaded: false,
+            data: [],
+            loadData: function () {
+                this.data = [];
+                var max = 51;
+                for(var i=0; i<50; i++) {
+                    this.data.push([Math.floor(Math.random() * max), Math.floor(Math.random() * max)]);
+                }
+                this.dataLoaded = true;
+            },
+            visualise: function () {
+                if (!this.dataLoaded) {
+                    this.loadData();
+                }
+
+                var width = window.innerWidth,
+                    height = window.innerHeight,
+                    padding = 100;
+
+                var svg = d3.select("#artboard").append("svg:svg")
+                    .attr("width", width)
+                    .attr("height", height);
+
+                //Create scale functions
+                var xScale = d3.scale.linear()
+                    .domain([0, d3.max(this.data, function(d) { return d[0]; })])
+                    .range([padding, width - padding * 2]);
+
+                var yScale = d3.scale.linear()
+                    .domain([0, d3.max(this.data, function(d) { return d[1]; })])
+                    .range([height - padding, padding]);
+
+                // Define X axis
+                var xAxis = d3.svg.axis()
+                    .scale(xScale)
+                    .orient("bottom")
+                    .ticks(5);
+
+                //Define Y axis
+                var yAxis = d3.svg.axis()
+                    .scale(yScale)
+                    .orient("left")
+                    .ticks(5);
+
+                //Create circles
+                svg.selectAll("circle")
+                    .data(this.data)
+                  .enter()
+                    .append("circle")
+                    .attr({
+                        cx: function (d) { return xScale(d[0])},
+                        cy: function (d) { return yScale(d[1])},
+                        r: 3,
+                        class: "oef2_cirkel"
+                    });
+
+                //Create X axis
+                svg.append("g")
+                    .attr("class", "axis")
+                    .attr("transform", "translate(0," + (height - padding) + ")")
+                    .call(xAxis);
+
+                //Create Y axis
+                svg.append("g")
+                    .attr("class", "axis")
+                    .attr("transform", "translate(" + padding + ",0)")
+                    .call(yAxis);
+
+
+                setInterval(function () {
+                    var max = 51;
+                    console.log(this);
+                    this.data.push([Math.floor(Math.random() * max), Math.floor(Math.random() * max)]);
+                    var points = svg.selectAll("circle")
+                        .data(this.data)
+                        .attr("class", "oef2_cirkel_update")
+                      .enter()
+                        .append("circle")
+                        .attr({
+                            cx: function (d) { return xScale(d[0])},
+                            cy: function (d) { return yScale(d[1])},
+                            r: 3,
+                            class: "oef2_cirkel_enter"
+                        })
+                      .exit().remove();
+
+                }, 1000);
+                this.displayed = true;
+            },
+            clear: function () {
+                if(this.displayed) {
+                    clearArtboard();
+                    this.displayed = false;
+                }
+            }
         }
     };
 
@@ -187,6 +419,18 @@
         if(slidecoord.compare([8,0])){
             visualisation.basic.visualise();
         }
+
+        if(slidecoord.compare([10,0])){
+            visualisation.scatterplotNoChrome.visualise();
+        }
+
+        if(slidecoord.compare([10,1])){
+            visualisation.scatterplotAxis.visualise();
+        }
+
+        if(slidecoord.compare([11,0])){
+            visualisation.scatterplotFull.visualise();
+        }
     });
 
     // Initial visualisation on the front-slide
@@ -199,6 +443,18 @@
 
         if(slidecoord.compare([8,0]) && !visualisation.basic.displayed){
             visualisation.basic.visualise();
+        }
+
+        if(slidecoord.compare([10,0]) && !visualisation.basic.displayed){
+            visualisation.scatterplotNoChrome.visualise();
+        }
+
+        if(slidecoord.compare([10,1]) && !visualisation.basic.displayed){
+            visualisation.scatterplotAxis.visualise();
+        }
+
+        if(slidecoord.compare([11,0]) && !visualisation.basic.displayed){
+            visualisation.scatterplotFull.visualise();
         }
     });
 
