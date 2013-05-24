@@ -66,7 +66,6 @@ Alle inhoud van dit bestand is Copyleft 2013 onder CC-BY-SA, all wrongs reversed
                     <li>Oefening: Aanpassen van visualisaties na interactie (10 min)</li>
                     <li>Vervolgstappen</li>
                 </ul>
-                <p>Tools?</p>
             </section>
             
             <!-- D3, Data-Driven Documents (5 min) -->
@@ -138,9 +137,10 @@ article p {
 
                 <section>
                     <h2>CSS Resources</h2>
-                    <a href=""></a>
-                    <a href=""></a>
+                    <a href="http://www.html5rocks.com/en/resources" target="_blank">HTML5 Rocks - Resources</a>
+                    <a href="http://learn.shayhowe.com/html-css/">A Beginners Guide to HTML &amp; CSS</a>
                 </section>
+
             </section>
 
             <section>
@@ -172,8 +172,8 @@ article p {
 
                 <section>
                     <h3>SVG Resources</h3>
-                    <a href=""></a>
-                    <a href=""></a>
+                    <a href="http://www.w3schools.com/svg/svg_intro.asp">W3Schools SVG tutorial</a><br />
+                    <a href="http://commons.oreilly.com/wiki/index.php/SVG_Essentials">SVG Essentials op de O'Reilly Wiki!</a>
                 </section>
             </section>
             
@@ -184,22 +184,30 @@ article p {
                 
                 <section>
                     <h2>Javascript in a nutshell</h2>
-                    <pre><code>
-                        
-                    </code></pre>
+                    <pre><code>var groet = "Hallo wereld!"
+    aantal = 42;
+
+var zegHallo = function () {
+    for(var i=0; i&lt;42; i+=1) {
+        console.log(groet);
+    }
+};
+</code></pre>
                 </section>
                 
                 <section>
                     <h2>JSON in a nutshell</h2>
-                    <pre><code>
-                        
-                    </code></pre>
+                    <pre><code>var object = {
+    eigenschap: "waarde",
+    nummeriek: 42,
+    functies: function () { console.log('What?');}
+};</code></pre>
                 </section>
 
                 <section>
                     <h3>Javascript Resources</h3>
-                    <a href=""></a>
-                    <a href=""></a>
+                    <a href="http://eloquentjavascript.net/">Eloquent Javascript van Marijn Haverbeke</a>
+                    <p>Crockford, Douglas. <em>Javascript, the good parts</em>, O'Reilly, 2008</p>
                 </section>
             </section>
 
@@ -479,6 +487,39 @@ svg.append("g")
                 <section data-state="soothe">
                     
                 </section>
+
+                <section data-state="soothe">
+                    <p>oef2_script.js (of oef2_valide.html)</p>
+                    <pre><code>// Voeg op regel 17 (49) toe
+var yScale = d3.scale.linear()
+    .domain([0, d3.max(data, function(d) { return d[1]; })])
+    .range([height - padding, padding]);
+
+// Voeg op regel 29 (60) toe
+var yAxis = d3.svg.axis()
+    .scale(yScale)
+    .orient("left")
+    .ticks(5);
+
+                    </code></pre>
+                </section>
+
+                <section data-state="soothe">
+                    <p>oef2_script.js (of oef2_valide.html)</p>
+                    <pre><code>data.push([42,42], [25, 36]); // Voeg zelf meer coordinaten toe
+var points = svg.selectAll("circle")
+    .data(data)
+    .attr("class", "oef2_cirkel_update") // Aanpassen bestaande selectie
+  .enter()
+    .append("circle") // Toevoegen nieuwe selectie
+    .attr({
+        cx: function (d) { return xScale(d[0])},
+        cy: function (d) { return yScale(d[1])},
+        r: 3,
+        class: "oef2_cirkel_enter"
+    });                 
+                    </code></pre>
+                </section>
             </section>            
 
             <!-- Interactie met gebruikers (10 min) -->
@@ -490,12 +531,7 @@ svg.append("g")
                 </section>
                 
                 <section>
-                    mouse-over voor extra informatie
-                </section>
 
-                <section>
-                    subselecties in bijv. jaartallen
-                    filter?
                 </section>
                 
             </section>
@@ -505,19 +541,36 @@ svg.append("g")
                 <section data-state="soothe">
                     lijndiagram met interactie!
                 </section>
+
+                <section data-state="soothe">
+                    <pre><code>// Voeg onderaan de volgende code toe
+d3.select("input").on("change", change);
+
+function change () {
+    svg.selectAll(".bar, .bar_checked")
+        .data(d3.entries(data))
+        .attr("class", this.checked?"bar_checked":"bar");
+}</code></pre>
+                </section>
             </section> 
 
             <!-- Outro, Vega -->
             <section>
                 <section>
                     <h2>Beyond basics</h2>
-                    <p>Transities</p>
-                    <p>Non-lineaire verdelingen</p>
+                    <img src="media/img/d3Advanced.png" alt="D3 Beyond basics" style="border: 0;">
                 </section>
 
                 <section>
                     <h2>Vega</h2>
-                    <p><em></em></p>
+                    <img src="media/img/vega.png" alt="Vega" style="border: 0;">
+                    <a href="http://trifacta.github.io/vega/" target="_blank">http://trifacta.github.io/vega/</a>
+                </section>
+                
+                <section>
+                    <h2>Vragen?</h2>
+                    <a href="https://twitter.com/ju5tu5" target="_blank">@ju5tu5</a>
+                    <a href="mailto:justus@ju5tu5.nl" target="_blank">justus@ju5tu5.nl</a>
                 </section>
 
                 <section style="text-align: left;">
@@ -530,8 +583,8 @@ svg.append("g")
                     </ul><br/><br/>
                     <p>Websites:</p>
                     <ul>
-                        <li><a href="http://d3js.org/">d3js.org</a></li>
-                        <li><a href="http://bost.ocks.org/mike/selection/">Uitleg over selecties van Mike Bostock</a></li>
+                        <li><a href="http://d3js.org/" target="_blank">d3js.org</a></li>
+                        <li><a href="http://bost.ocks.org/mike/selection/" target="_blank">Uitleg over selecties van Mike Bostock</a></li>
                     </ul>
                     <br/><br/>
                     <p>Word lid van: http://www.reddit.com/r/d3js</p>

@@ -11,6 +11,9 @@ svg {
 .bar {
   fill: steelblue;
 }
+.bar_checked {
+  fill: red;
+}
 
 .x.axis path {
   display: none;

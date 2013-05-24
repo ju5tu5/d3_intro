@@ -68,3 +68,24 @@
     fill: green;
     stroke: black;
 }
+
+svg {
+    font-size: 10px;
+}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: steelblue;
+}
+.bar_checked {
+  fill: red;
+}
+
+.x.axis path {
+  display: none;
+}
