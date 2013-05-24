@@ -49,3 +49,10 @@ var svg = d3.select("body").append("svg")
       .attr("height", function(d) { return height - yScale(d.value/100); });
 
 // VOEG HIER INTERACTIE TOE!
+d3.select("input").on("change", change);
+
+function change () {
+    svg.selectAll(".bar, .bar_checked")
+        .data(d3.entries(data))
+        .attr("class", this.checked?"bar_checked":"bar");
+}
